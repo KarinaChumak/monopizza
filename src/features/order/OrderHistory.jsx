@@ -22,7 +22,7 @@ function OrderHistory() {
         </ul>
       ) : (
         <div className="mt-12 space-y-4 ">
-          <img src="../../../public/empty.svg" className="mx-auto"></img>
+          <img src="empty.svg" className="mx-auto"></img>
           <p className="mx-auto text-center font-primary text-lg text-stone-700">
             You haven&apos;t ordered anything yet
           </p>
