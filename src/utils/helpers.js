@@ -21,7 +21,7 @@ export function calcMinutesLeft(dateStr) {
 }
 
 // https://uibakery.io/regex-library/phone-number
-export const isValidPhone = (str) =>
-  /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-    str,
-  );
+export const isValidPhone = (phoneNumber) => {
+  const regEx = /^\+[1-9]\d{10,14}$/;
+  return regEx.test(phoneNumber);
+};

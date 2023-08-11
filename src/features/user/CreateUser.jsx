@@ -73,7 +73,7 @@ function CreateUser() {
 
   return (
     <div className="my-8 flex h-[80vh] justify-between gap-8 min-[1757px]:px-64">
-      <div className=" flex grow flex-col justify-center bg-gradient-to-r from-orange-50 to-teal-50">
+      <div className="  hidden grow flex-col justify-center bg-gradient-to-r from-orange-50 to-teal-50 sm:flex">
         <div className="mx-auto space-y-6  ">
           <div className="  flex items-center gap-4 font-primary text-stone-700">
             <span className="inline-block flex aspect-square w-9 items-center justify-center rounded-full bg-white shadow-md">
@@ -98,12 +98,16 @@ function CreateUser() {
         </div>
       </div>
       <div className=" mt-24 w-96 grow">
-        <h1 className="mb-2 font-header text-3xl leading-10 text-stone-700">
+        <h1 className="mb-2 font-header text-xl leading-10 text-stone-700 sm:text-3xl">
           👋 Welcome!
+        </h1>
+
+        <h1 className="mb-4 font-header text-xl leading-10  text-stone-700 sm:text-3xl">
+          Please enter your contact data:
         </h1>
         {otpRequested ? (
           <form onSubmit={handleVerifyOtp}>
-            <p className="mb-4 font-primary text-xl text-stone-500">
+            <p className="mb-4 font-primary text-lg text-stone-500 sm:text-xl">
               Please enter the code from SMS
             </p>
             <OtpInput
@@ -121,23 +125,23 @@ function CreateUser() {
             </div>
           </form>
         ) : (
-          <form onSubmit={handleRequestOtp} className="flex flex-col gap-4">
-            <h1 className="font-header text-3xl leading-10 text-stone-700">
-              Please enter your contact data:
-            </h1>
+          <form
+            onSubmit={handleRequestOtp}
+            className="items-strech flex w-full flex-col gap-4 sm:w-1/2"
+          >
             <p className=" font-primary text-stone-500">{`You'll receive a code via SMS`}</p>
             <input
               type="text"
               placeholder="Your full name"
               value={username}
-              className="input w-1/2"
+              className="input "
               onChange={(e) => setUsername(e.target.value)}
             />
             <input
               type="text"
               placeholder="Your phone number"
               value={phone}
-              className="input w-1/2"
+              className="input"
               onChange={(e) => setPhone(e.target.value)}
             />
 
@@ -145,16 +149,15 @@ function CreateUser() {
               <ul>
                 {errors.map((err, i) => (
                   <li key={i}>
-                    <p className=" mt-2 w-1/2 rounded-md bg-red-100 p-2  text-xs text-red-700">
+                    <p className=" mt-2  rounded-md bg-red-100 p-2  text-xs text-red-700">
                       {err}
                     </p>
                   </li>
                 ))}
               </ul>
             )}
-            <div>
-              <Button>Send me a code</Button>
-            </div>
+
+            <Button fullWidth={true}>Send me a code</Button>
           </form>
         )}
       </div>

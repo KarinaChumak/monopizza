@@ -56,7 +56,7 @@ function CreateOrder() {
         className="flex  flex-col justify-between gap-4 min-[871px]:flex-row min-[871px]:items-start min-[871px]:gap-16 "
       >
         {/* left part */}
-        <div className="my-4  space-y-2 sm:space-y-6 md:grow">
+        <div className="my-4  space-y-4 sm:space-y-6 md:grow">
           <h1 className=" font-header text-xl text-stone-700 sm:text-3xl">
             New delivery order
           </h1>
@@ -140,14 +140,14 @@ function CreateOrder() {
               />
             </div>
           </div>
-          <div className="flex items-center space-x-1 font-primary text-sm sm:space-x-2 sm:text-xl">
+          <div className="mt-2 flex items-center space-x-1 font-primary text-sm sm:space-x-2 sm:text-xl">
             <input
               type="checkbox"
               name="priority"
               id="priority"
               value={withPriority}
               onChange={(e) => setWithPriority(e.target.checked)}
-              className="h-4 w-4 accent-orange-400 sm:h-6 sm:w-6"
+              className="h-4 w-4 accent-orange-400 sm:h-6 sm:w-6 "
             />
             <label htmlFor="priority">Want to give your order priority?</label>
           </div>

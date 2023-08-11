@@ -12,15 +12,17 @@ import { useEffect } from 'react';
 import { resetUser } from './userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import Error from '../../ui/Error';
+import Loader from '../../ui/Loader';
 
 function Account() {
   const navigate = useNavigate();
+
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   useEffect(
     function () {
-      if (!user.isAuthenticated && !user.status === 'loading') {
+      if (!user.isAuthenticated) {
         navigate('/signUp');
       }
     },

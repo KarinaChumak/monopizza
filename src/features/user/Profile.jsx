@@ -6,7 +6,13 @@ import store from '../../store';
 import { updateUser as updateUserDb } from '../../services/apiUser';
 
 import { updateUser } from '../user/userSlice';
-import { Form, redirect, useActionData, useNavigation } from 'react-router-dom';
+import {
+  Form,
+  redirect,
+  useActionData,
+  useFetcher,
+  useNavigation,
+} from 'react-router-dom';
 
 function isValidEmail(email) {
   var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
@@ -16,6 +22,8 @@ function isValidEmail(email) {
 function Profile() {
   const user = useSelector((state) => state.user);
   const navigation = useNavigation();
+  const fetcher = useFetcher();
+
 
   const [value, setValue] = useState({
     startDate: user?.birthday,
@@ -41,7 +49,7 @@ function Profile() {
       <h2 className="font-header text-2xl text-stone-700 2xl:text-3xl">
         Profile settings
       </h2>
-      <Form method="POST" action="">
+      <fetcher.Form method="PATCH" action="">
         <input
           name="username"
           className="input my-6 w-2/3 lg:w-1/2"
@@ -95,8 +103,10 @@ function Profile() {
           </div>
         </p>
 
-        <Button disabled={isDisabled}>Save changes</Button>
-      </Form>
+        <Button disabled={isDisabled}>
+          {fetcher.state === 'submitting' ? 'Updating...' : 'Save changes'}
+        </Button>
+      </fetcher.Form>
     </div>
   );
 }
@@ -118,7 +128,7 @@ export async function action({ request }) {
 
   store.dispatch(updateUser(data));
 
-  return redirect(`/account/personal`);
+  return null;
 }
 
 export default Profile;

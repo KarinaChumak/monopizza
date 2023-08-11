@@ -1,18 +1,18 @@
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import {
   Navigate,
   RouterProvider,
   createBrowserRouter,
 } from 'react-router-dom';
 
-import Home from './ui/Home';
 import Menu, { loader as menuLoader } from './features/menu/Menu';
-import Cart from './features/cart/Cart';
 import CreateOrder, {
   action as newOrderAction,
 } from './features/order/CreateOrder';
-
-import Order, { loader as orderLoader } from './features/order/Order';
+import Cart from './features/cart/Cart';
 import AppLayout from './ui/AppLayout';
+import Order, { loader as orderLoader } from './features/order/Order';
 import Error from './ui/Error';
 import Account from './features/user/Account';
 import CreateUser from './features/user/CreateUser';
@@ -21,9 +21,8 @@ import OrderHistory, {
 } from './features/order/OrderHistory';
 import Profile, { action as profileAction } from './features/user/Profile';
 import Adresses from './features/user/Adresses';
-import { useEffect } from 'react';
+
 import { getCurrentUser, getCurrentUserAddresses } from './services/apiUser';
-import { useDispatch } from 'react-redux';
 import {
   createUser,
   resetUser,

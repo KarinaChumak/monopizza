@@ -10,12 +10,27 @@ export async function signIn(phone) {
   }
 }
 
+export async function verify({ phone, otp }) {
+  let { data, error } = await supabase.auth.verifyOtp({
+    phone,
+    token: otp,
+    type: 'sms',
+  });
+
+  if (error) {
+    throw new Error(error.message);
+  }
+  return data;
+}
+
 // for dev purposes
 export async function phoneSignIn({ phone }) {
   var { data, error } = await supabase.auth.signUp({
     phone,
     password: phone,
   });
+
+  data.addresses = [];
 
   if (!error) return data;
 
@@ -28,8 +43,6 @@ export async function phoneSignIn({ phone }) {
     password: phone,
   });
 
-  ('res');
-  res;
   return res.data;
 }
 
@@ -39,19 +52,6 @@ export async function signOut() {
   if (error) {
     throw new Error(error.message);
   }
-}
-
-export async function verify({ phone, otp }) {
-  let { data, error } = await supabase.auth.verifyOtp({
-    phone,
-    token: otp,
-    type: 'sms',
-  });
-
-  if (error) {
-    throw new Error(error.message);
-  }
-  return data;
 }
 
 export async function createUser({ username, phone, authId }) {

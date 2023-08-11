@@ -19,6 +19,7 @@ function Error() {
               Oops... Something went wrong 😢
             </h1>
 
+            <p>{error.data || error.message}</p>
             <Button onClick={() => navigate(-1)}>&larr; Go back</Button>
           </div>
         )}

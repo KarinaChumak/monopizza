@@ -28,16 +28,6 @@ function Order() {
 
   const fetcher = useFetcher();
 
-  // // Loading data from a loader, but from the other page
-  // useEffect(
-  //   function () {
-  //     if (!fetcher.data && fetcher.state === 'idle') {
-  //       fetcher.load('/menu');
-  //     }
-  //   },
-  //   [fetcher],
-  // );
-
   return (
     <div className="mt-6 w-full space-y-4 md:space-y-12 lg:w-2/3 min-[1757px]:w-full min-[1757px]:px-64">
       <div className=" flex flex-col items-center justify-between space-y-2 min-[470px]:flex-row">
@@ -68,8 +58,6 @@ function Order() {
 
       <ul className="space-y-4 min-[1757px]:mx-48">
         {cart.map((item) => {
-          // const menuItem = fetcher?.data?.find((el) => el.id === item.pizzaId);
-          // const fullItemInfo = { ...item, ...menuItem };
           return (
             <OrderCartItem
               key={item.pizzaId}

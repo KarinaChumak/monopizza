@@ -52,7 +52,7 @@ const userSlice = createSlice({
         state.email = action.payload.email;
         state.isAuthenticated = true;
         state.status = 'idle';
-        state.addresses = action.payload.addresses;
+        state.addresses = action.payload.addresses || [];
       },
     },
     resetUser() {
