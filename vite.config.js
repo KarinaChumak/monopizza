@@ -5,7 +5,7 @@ import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), nodePolyfills()],
+  plugins: [react()],
   resolve: {
     alias: {
       util: 'rollup-plugin-node-polyfills/polyfills/util',
