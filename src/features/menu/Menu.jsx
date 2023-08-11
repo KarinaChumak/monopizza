@@ -5,7 +5,6 @@ import MenuItem from './MenuItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-import 'react-modern-drawer/dist/index.css';
 import { useState, useEffect } from 'react';
 
 import { motion, AnimatePresence } from 'framer-motion';
