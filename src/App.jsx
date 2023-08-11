@@ -18,7 +18,7 @@ import Account from './features/user/Account';
 import CreateUser from './features/user/CreateUser';
 import OrderHistory, {
   loader as historyLoader,
-} from './features/user/OrderHistory';
+} from './features/order/OrderHistory';
 import Profile, { action as profileAction } from './features/user/Profile';
 import Adresses from './features/user/Adresses';
 import { useEffect } from 'react';
