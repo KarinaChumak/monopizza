@@ -13,6 +13,7 @@ export default defineConfig({
       fs: 'rollup-plugin-node-polyfills/polyfills/empty',
       url: 'rollup-plugin-node-polyfills/polyfills/empty',
       'source-map-js': 'rollup-plugin-node-polyfills/polyfills/empty',
+      process: 'rollup-plugin-node-polyfills/polyfills/empty',
     },
   },
 });
