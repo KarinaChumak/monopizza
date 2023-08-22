@@ -8,6 +8,9 @@ import { createUser } from './userSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, Form } from 'react-router-dom';
 import { isValidPhone } from '../../utils/helpers';
+
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+
 import {
   signIn,
   verify,
@@ -18,8 +21,8 @@ import {
 function CreateUser() {
   const user = useSelector((state) => state.user);
 
-  const [username, setUsername] = useState('');
-  const [phone, setPhone] = useState('');
+  const [username, setUsername] = useState('Test User');
+  const [phone, setPhone] = useState('+123456789876');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [errors, setErrors] = useState([]);
@@ -107,8 +110,11 @@ function CreateUser() {
         </h1>
         {otpRequested ? (
           <form onSubmit={handleVerifyOtp}>
-            <p className="mb-4 font-primary text-lg text-stone-500 sm:text-xl">
+            <p className=" font-primary text-lg text-stone-500 sm:text-xl">
               Please enter the code from SMS
+            </p>
+            <p className="mb-4 font-primary text-sm text-stone-400">
+              *or just click "Verify"
             </p>
             <OtpInput
               value={otp}
@@ -129,7 +135,7 @@ function CreateUser() {
             onSubmit={handleRequestOtp}
             className="items-strech flex w-full flex-col gap-4 sm:w-1/2"
           >
-            <p className=" font-primary text-stone-500">{`You'll receive a code via SMS`}</p>
+            <p className=" font-primary text-stone-500">{`You'll receive a code via SMS*`}</p>
             <input
               type="text"
               placeholder="Your full name"
@@ -158,6 +164,10 @@ function CreateUser() {
             )}
 
             <Button fullWidth={true}>Send me a code</Button>
+            <p className=" font-primary text-sm text-stone-400">
+              *OTP was implemented and then disabled due to limitations of free
+              versions of message providers.
+            </p>
           </form>
         )}
       </div>
